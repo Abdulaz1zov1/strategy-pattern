@@ -1,13 +1,10 @@
-const Bank = require('./1-Bank')
+const Chase = require('./Chase')
+const Bank = require('./2-Bank')
+const Payment = require('./Payment') 
 
-class Chase extends Bank {
-    processPayment() {
-        console.log(`Your payment of ${this.amount} has been process by Chase`);
-    }
-    processRefund() {
-        console.log(`a refund of amount ${this.amount} has been process by Chase`);
-    }
-}
+const payment = new Payment()
 
+payment.pay(new Chase(200, '266342780123'))
+payment.pay(new Bank(150, '031342780123'))
 
-module.expors = Chase
+payment.refund(new Chase(150, '266342780123'))
